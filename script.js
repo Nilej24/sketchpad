@@ -1,11 +1,13 @@
 const resetButton = document.querySelector("button");
 const container = document.querySelector(".container");
 
+let squareSize;
+
 function reset(sideSquares) {
 
 	document.querySelectorAll(".container > *").forEach(square => square.remove());
 
-	const squareSize = 512 / sideSquares;
+	squareSize = 512 / sideSquares;
 
 	for(let x = 0; x < sideSquares; x++)
 		for(let y = 0; y < sideSquares; y++) {
@@ -31,7 +33,7 @@ function reset(sideSquares) {
 
 function promptReset() {
 
-	const sideSquares = +prompt("enter the amount of squares per side. it's gotta be between 1 and 100", "16");
+	const sideSquares = +prompt("enter the amount of squares per side. it's gotta be between 1 and 100", (512 / squareSize));
 
 	if(!sideSquares || sideSquares < 1 || sideSquares > 100)
 		console.log("enter a size within the range");
