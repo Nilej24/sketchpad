@@ -14,7 +14,13 @@ function reset(sideSquares) {
 			div.style.cssText = `width: ${squareSize}px; height: ${squareSize}px;`;
 			div.addEventListener("mouseover", function (ev) {
 			
-				ev.target.style.backgroundColor = "black";
+				const rgb = ev.target.style.backgroundColor.slice(4, -1).split(", ");
+				const brightness = +rgb[0];
+
+				if(brightness < 255) {
+					const newBr = brightness + 32;
+					ev.target.style.backgroundColor = `rgb(${newBr}, ${newBr}, ${newBr})`;
+				}
 			
 			});
 			container.append(div);
